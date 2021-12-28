@@ -1,0 +1,48 @@
+package com.iot.mapper;
+
+import com.iot.domain.User;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+/**
+ * @ClassName: UserMapper
+ * @Description:
+ * @Author: 薛莎莎
+ * @Date: 2021/3/26 10:41
+ * @Version:1.0
+ * @Unitname:湖南农业大学信息学院物联网工程系
+ * @Copyright:综合训练系统V1.0
+ * @ReWriting: Justina
+ */
+@Mapper
+@Repository
+public interface UserMapper {
+
+    /**
+     * @Author PJL
+     * @Description //TODO 根据登录名称查询用户，主要用于登录校验
+     * @Date 18:42 2021/11/22
+     * @Param [loginName]
+     * @return com.iot.domain.User
+     **/
+    User selectUserByName(String loginName);
+
+    /**
+     * @Author PJL
+     * @Description //TODO 添加用户，主要用于注册
+     * @Date 18:42 2021/11/22
+     * @Param [user]
+     * @return int
+     **/
+    int addUser(User user);
+
+    /**
+     * @Author PJL
+     * @Description //TODO 用于用户注册时生产随机盐
+     * @Date 10:45 2021/3/26
+     * @Param [len]
+     * @return java.lang.String
+     **/
+    String randomSalt(int len);
+
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hunau.mapper.CollDataMapper">
+    <resultMap id="CollDataMap" type="com.hunau.entity228.CollData" autoMapping="true">
+        <id property=" " column=""/>
+        <result property=" " column=""/>
+    </resultMap>
+
+    <select id="selectAllCollData" resultType="com.hunau.entity228.CollData">
+        select id,
+               temp,
+               hum,
+               ip,
+               address,
+               colltime
+        from coll_data
+        order by id desc
+    </select>
+
+    <select id="countCollData" resultType="int">
+        select count(id)
+        from coll_data
+    </select>
+
+    <delete id="deleteCollDataById" parameterType="int">
+        delete
+        from coll_data
+        where id = #{id}
+    </delete>
+
+    <insert id="insertCollData" parameterType="com.hunau.entity228.CollData">
+        insert into coll_data(
+        <if test="temp != null and temp != ''">temp,</if>
+        <if test="hum != null and hum != ''">hum,</if>
+        <if test="address != null and address != ''">address,</if>
+        <if test="ip != null and ip != ''">IP,</if>
+        colltime
+        )
+        values(
+        <if test="temp != null and temp != ''">#{temp},</if>
+        <if test="hum != null and hum != ''">#{hum},</if>
+        <if test="address != null and address != ''">#{address},</if>
+        <if test="ip != null and ip != ''">#{ip},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateCollDateById" parameterType="com.hunau.entity228.CollData">
+        update coll_data
+        <set>
+            <if test="id != null and id != ''">id = #{id},</if>
+            <if test="temp != null and temp != ''">temp = #{temp},</if>
+            <if test="hum != null and hum != ''">hum = #{hum},</if>
+            <if test="address != null and address != ''">address = #{address},</if>
+            <if test="ip != null and ip != ''">ip = #{ip},</if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>
