@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hunau.mapper228.CollDataMapper">
+
+    <select id="selectAllCollData" resultType="com.hunau.entity.CollData">
+        select id,
+               supersonic,
+               temp,
+               hum,
+               light,
+               address,
+               colltime,
+               ispermit
+        from coll_data
+        order by id desc
+    </select>
+
+    <select id="countCollData" resultType="int">
+        select count(id)
+        from coll_data
+    </select>
+
+    <delete id="deleteCollDataById" parameterType="int">
+        delete
+        from coll_data
+        where id = #{id}
+    </delete>
+
+    <insert id="insertCollData" parameterType="com.hunau.entity.CollData">
+        insert into coll_data(
+        <if test="supersonic != null and supersonic != ''">supersonic,</if>
+        <if test="temp != null and temp != ''">temp,</if>
+        <if test="hum != null and hum != ''">hum,</if>
+        <if test="light != null and light != ''">light,</if>
+        <if test="address != null and address != ''">address,</if>
+        colltime
+        )
+        values(
+        <if test="supersonic != null and supersonic != ''">#{supersonic},</if>
+        <if test="temp != null and temp != ''">#{temp},</if>
+        <if test="hum != null and hum != ''">#{hum},</if>
+        <if test="light != null and light != ''">#{light},</if>
+        <if test="address != null and address != ''">#{address},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateCollDateById" parameterType="com.hunau.entity.CollData">
+        update coll_data
+        <set>
+            <if test="id != null and id != ''">id = #{id},</if>
+            <if test="supersonic != null and supersonic != ''">supersonic = #{supersonic},</if>
+            <if test="temp != null and temp != ''">temp = #{temp},</if>
+            <if test="hum != null and hum != ''">hum = #{hum},</if>
+            <if test="light != null and light != ''">light=#{light},</if>
+            <if test="address != null and address != ''">address = #{address},</if>
+            <if test="ispermit != null and ispermit != ''">ispermit = #{ispermit}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>
