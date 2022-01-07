@@ -13,6 +13,7 @@
         <module>Entity228</module>
         <module>Mapper228</module>
         <module>Service228</module>
+        <module>Netty228</module>
     </modules>
 
     <properties>

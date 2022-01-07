@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_ADDITIONAL_VM_OPTIONS" value="-Djps.track.ap.dependencies=false" />
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
@@ -10,6 +11,7 @@
         <module name="Entity228" />
         <module name="Service228" />
         <module name="Bluetooth228" />
+        <module name="Netty228" />
         <module name="Mapper228" />
         <module name="Web228" />
       </profile>
